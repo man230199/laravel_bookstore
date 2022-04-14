@@ -94,7 +94,7 @@ class UserModel extends AdminModel
         if ($options['task'] == 'auth-login') {
             $result = self::select('id', 'name', 'email', 'role_id')
                 ->where('email', $params['email'])
-                ->where('password', md5($params['password']))->first();
+                ->where('password', bcrypt($params['password']))->first();
 
             if ($result) $result = $result->toArray();
         }
@@ -119,7 +119,7 @@ class UserModel extends AdminModel
             $params['created_by'] = "hailan";
             $params['created']    = date('Y-m-d');
             $params['avatar']      = $this->uploadThumb($params['avatar']);
-            $params['password']    = md5($params['password']);
+            $params['password']    = bcrypt($params['password']);
             self::insert($this->prepareParams($params));
         }
 
@@ -127,7 +127,7 @@ class UserModel extends AdminModel
             $params['created_at']      = date('Y-m-d');
            // $params['role_id']      = '3';
             $params['avatar']       = 'users/default.png';
-            $params['password']     = md5($params['password']);
+            $params['password']     = bcrypt($params['password']);
             self::insert($this->prepareParams($params));
             // $user = self::getItem($params, ['task' => 'check-exist-user']);
             // if ($user == null) {
