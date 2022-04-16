@@ -10,17 +10,24 @@
                     <h3>Đăng nhập</h3>
                     <div class="theme-card">
                         @include('store.blocks.notify')
-                        <form action="{{ route('auth/postLogin') }}" method="post" id="admin-form" class="theme-form">
+                        <form action="{{ route('voyager.login') }}" method="post" id="admin-form" class="theme-form">
                             @csrf
                             <div class="form-group">
                                 <label for="email" class="required">Email</label>
-                                <input type="email" id="form[email]" name="form[email]" value="" class="form-control">
+                                <input type="email" name="email" id="email" value="{{ old('email') }}"
+                                    placeholder="{{ __('voyager::generic.email') }}" class="form-control">
                             </div>
 
                             <div class="form-group">
                                 <label for="password" class="required">Mật khẩu</label>
-                                <input type="password" id="form[password]" name="form[password]" value=""
-                                    class="form-control">
+                                <input type="password" name="password" placeholder="{{ __('voyager::generic.password') }}"
+                                    value="" class="form-control">
+                            </div>
+                            <div class="form-group" id="rememberMeGroup">
+                                <div class="controls">
+                                    <input type="checkbox" name="remember" id="remember" value="1"><label for="remember"
+                                        class="remember-me-text">{{ __('voyager::generic.remember_me') }}</label>
+                                </div>
                             </div>
                             <input type="hidden" id="form[_token]" name="form[_token]" value="{{ @csrf_token() }}">
                             <button type="submit" id="submit" name="submit" value="Đăng nhập" class="btn btn-solid">Đăng
