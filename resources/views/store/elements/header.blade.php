@@ -77,8 +77,7 @@ if (!empty(session()->get('cart'))) {
                                         @foreach ($nav_items as $name => $item)
                                             @if (isset($item['route']) && $item['route'] == 'voyager.logout')
                                                 @if (Auth::user())
-                                                    <img src="{{ Voyager::avatar(Auth::user()->avatar) }}"
-                                                        alt="avatar">
+                                                    <img src="{{ asset('store') }}/images/avatar.png" alt="avatar">
                                                     <ul class="onhover-show-div">
                                                         <li><a href="#">{{ Auth::user()->name }}</a>
                                                         </li>

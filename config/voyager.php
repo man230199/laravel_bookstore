@@ -56,7 +56,7 @@ return [
 
     'storage' => [
         // 'disk' => 'public',
-        'disk' => 'store_images',
+        'disk' => 'store_images'
 
     ],
 
@@ -149,7 +149,9 @@ return [
             'TCG\\Voyager\\Widgets\\UserDimmer',
             'TCG\\Voyager\\Widgets\\PostDimmer',
             'TCG\\Voyager\\Widgets\\PageDimmer',
+            'TCG\\Voyager\\Widgets\\BookDimmer',
             'App\\Widgets\\BookDimmer',
+            'App\\Widgets\\CategoryDimmer',
         ],
 
     ],
