@@ -55,8 +55,8 @@ $cartLink = route('cart/order', ['product_id' => $item['id'], 'price' => $salePr
                                             </div>
                                         </div>
                                         <div class="product-buttons">
-                                            <a href="#" data-url="{{ $cartLink }}" id="add-to-cart"
-                                                class="btn btn-solid ml-0" onclick="javascript(0)"><i
+                                            <a href="javaScript:void(0)" data-url="{{ $cartLink }}" id="add-to-cart"
+                                                class="btn btn-solid ml-0"><i
                                                     class="fa fa-cart-plus"></i> Chọn
                                                 mua</a>
                                         </div>

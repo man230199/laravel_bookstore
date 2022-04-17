@@ -55,7 +55,7 @@ return [
     */
 
     'storage' => [
-        //'disk' => 'public',
+        // 'disk' => 'public',
         'disk' => 'store_images',
 
     ],

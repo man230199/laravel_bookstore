@@ -125,7 +125,7 @@ class UserModel extends AdminModel
 
         if ($options['task'] == 'register') {
             $params['created_at']      = date('Y-m-d');
-           // $params['role_id']      = '3';
+            $params['role_id']      = 1;
             $params['avatar']       = 'users/default.png';
             $params['password']     = bcrypt($params['password']);
             self::insert($this->prepareParams($params));

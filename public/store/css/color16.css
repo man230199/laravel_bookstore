@@ -71,6 +71,9 @@ body {
     body.christmas section {
       overflow: hidden; }
 
+#top-tabContent {
+  margin-top:20px;
+}
 h1 {
   font-size: 60px;
   color: #222222;
@@ -3988,7 +3991,8 @@ header {
     transition: all 0.5s ease; }
 
 .theme-card {
-  position: relative; }
+  position: relative;
+  margin-top: 50px; }
   .theme-card.center-align {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -4046,7 +4050,7 @@ header {
       content: "\f104"; }
   .theme-card .offer-slider img {
     height: 160px;
-    padding: 15px 15px 15px 0; }
+    padding: 35px 2px 15px 0; }
   .theme-card .offer-slider > div .media:last-child .media-body {
     margin-top: 15px; }
   .theme-card .offer-slider > div .media:last-child img {
@@ -14975,7 +14979,7 @@ body.dark {
   .theme-card .offer-slider .media .media-body h4 {
     margin-top: 10px; }
   .theme-card .offer-slider .media .media-body a h6 {
-    margin-right: 50px; }
+    margin-right: 5px; }
   .full-box .theme-card .offer-slider .product-box2 .media .media-body a h6 {
     margin-right: 0; }
   .theme-tab .tab-content .product-tab .tab-box .product-box2 img {

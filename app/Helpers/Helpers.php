@@ -39,6 +39,7 @@ class Helpers
         $sale_off = Helpers::createSpan($item['sale_off']);
         $sale_price = number_format($item['price'] - ($item['price'] * $item['sale_off'] / 100));
         $cartLink = route('cart/order', ['product_id' => $item['id'], 'price' => $item['price'] - ($item['price'] * $item['sale_off'] / 100), 'quantity' => 'new_quantity']);
+        $quickviewLink = route('book/ajaxQuickView', ['product_id' => $item['id']]);
         $result .= sprintf(
             '
             <div class="product-box">
@@ -53,7 +54,7 @@ class Helpers
                     </div>
                     <div class="cart-info cart-wrap">
                         <a href="javaScript:void(0)" id="add-one-to-cart" data-url="%s" title="Add to cart"><i class="ti-shopping-cart"></i></a>
-                        <a href="javaScript:void(0)" title="Quick View"><i class="ti-search" data-toggle="modal" data-target="#quick-view"></i></a>
+                        <a href="javaScript:void(0)" title="Quick View"><i class="ti-search" id="ajax-quickview" data-url="%s" data-toggle="modal" data-target="#quick-view"></i></a>
                     </div>
                 </div>
                 <div class="product-detail">
@@ -76,6 +77,7 @@ class Helpers
             $link,
             $image,
             $cartLink,
+            $quickviewLink,
             $link,
             $item['name'],
             $name,

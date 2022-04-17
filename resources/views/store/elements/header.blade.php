@@ -40,8 +40,14 @@ if (!empty(session()->get('cart'))) {
                                         <div class="mobile-back text-right">Back<i class="fa fa-angle-right pl-2"
                                                 aria-hidden="true"></i></div>
                                     </li>
-                                    <li><a href="{{ route('home') }}" class="my-menu-link active">Trang chủ</a></li>
-                                    <li><a href="{{ route('book/list') }}">Sách</a></li>
+                                    {{-- {{ request()->is('sites/*/edit') ? 'active' : '' }} --}}
+                                    {{-- <li><a href="{{ route('home') }}" class="my-menu-link active">Trang chủ</a></li> --}}
+                                    <li><a href="{{ route('home') }}"
+                                            class="my-menu-link {{ Request::routeIs('home') ? 'active' : '' }}">Trang
+                                            chủ</a></li>
+                                    <li><a href="{{ route('book/list') }}"
+                                            class="my-menu-link {{ Request::routeIs('book/list') ? 'active' : '' }}">Sách</a>
+                                    </li>
                                     <li>
                                         <a href="#">Danh mục</a>
                                         <ul>
@@ -60,17 +66,50 @@ if (!empty(session()->get('cart'))) {
                         <div class="top-header">
                             <ul class="header-dropdown">
                                 <li class="onhover-dropdown mobile-account">
-                                    <img src="{{ asset('store') }}/images/avatar.png" alt="avatar">
-                                    <ul class="onhover-show-div">
-                                        @if (session('userInfo'))
-                                            <li><a href="#">{{ session('userInfo')['name'] }}</a>
-                                            </li>
-                                            <li><a href="{{ route('auth/logout') }}">Đăng xuất</a></li>
-                                        @else
-                                            <li><a href="{{ route('auth/login') }}">Đăng nhập</a></li>
-                                            <li><a href="{{ route('auth/register') }}">Đăng ký</a></li>
-                                        @endif
-                                    </ul>
+
+
+                                    {{-- <li><a href="#">{{ session('userInfo')['name'] }}</a>
+                                            </li> --}}
+                                    <?php $nav_items = config('voyager.dashboard.navbar_items');
+                                    
+                                    ?>
+                                    @if (is_array($nav_items) && !empty($nav_items))
+                                        @foreach ($nav_items as $name => $item)
+                                            @if (isset($item['route']) && $item['route'] == 'voyager.logout')
+                                                @if (Auth::user())
+                                                    <img src="{{ Voyager::avatar(Auth::user()->avatar) }}"
+                                                        alt="avatar">
+                                                    <ul class="onhover-show-div">
+                                                        <li><a href="#">{{ Auth::user()->name }}</a>
+                                                        </li>
+                                                        @if (Auth::user()->role_id == 1)
+                                                            <li><a href="{{ route('voyager.dashboard') }}">Trang quản
+                                                                    lí</a>
+                                                            </li>
+                                                        @endif
+                                                        <form action="{{ route('voyager.logout') }}" method="POST">
+                                                            {{ csrf_field() }}
+                                                            <button type="submit" class="btn btn-danger btn-block">
+                                                                Đăng xuất
+                                                            </button>
+                                                        </form>
+
+                                                        {{-- <li><a href="{{ route('voyager.logout') }}">Đăng xuất</a></li> --}}
+                                                    @else
+                                                        <img src="{{ asset('store') }}/images/avatar.png"
+                                                            alt="avatar">
+                                                        <ul class="onhover-show-div">
+                                                            <li><a href="{{ route('auth/login') }}">Đăng nhập</a>
+                                                            </li>
+                                                            <li><a href="{{ route('auth/register') }}">Đăng ký</a>
+                                                            </li>
+
+
+                                                        </ul>
+                                                @endif
+                                            @endif
+                                        @endforeach
+                                    @endif
                                 </li>
                             </ul>
                         </div>

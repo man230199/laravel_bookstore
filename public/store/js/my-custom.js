@@ -32,7 +32,7 @@ $(document).ready(function () {
         });
     });
 
-    $(".ti-search").on("click", function () {
+    $(document).on("click", ".ti-search", function () {
         let url = $(this).data("url");
         $.ajax({
             type: "GET",
@@ -167,7 +167,9 @@ $(document).ready(function () {
         var id = $(this).data("id");
         var price = $(this).data("price");
         var notification = $(this).parent();
-        $("#total-item-price-" + id).text(format_number(quantity * price) + " đ");
+        $("#total-item-price-" + id).text(
+            format_number(quantity * price) + " đ"
+        );
 
         $.ajax({
             type: "GET",

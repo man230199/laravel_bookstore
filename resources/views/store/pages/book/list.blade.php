@@ -110,6 +110,6 @@ $items = isset($request_id) ? $items['products'] : $items;
         </div>
     </section>
 @endsection
-
+@include('store.blocks.quickview')
 
 </html>
